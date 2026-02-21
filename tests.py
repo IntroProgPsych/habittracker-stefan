@@ -1,14 +1,24 @@
-#import all needed modules here
+# tests.py
+
 import unittest
+from app import interpret_score
 
-#write all your tests below this line
+
+class TestInterpretScore(unittest.TestCase):
+
+    def test_high_score(self):
+        self.assertEqual(interpret_score(12), "High")
+        self.assertEqual(interpret_score(20), "High")
+
+    def test_moderate_score(self):
+        self.assertEqual(interpret_score(6), "Moderate")
+        self.assertEqual(interpret_score(10), "Moderate")
+        self.assertEqual(interpret_score(11), "Moderate")
+
+    def test_low_score(self):
+        self.assertEqual(interpret_score(0), "Low")
+        self.assertEqual(interpret_score(5), "Low")
 
 
-#write your test suite here, in the main() function
-def main():
-    #call all your tets here, one on each line
-    print("Starting tests suite...")
-    
-#please do not change the lines below
 if __name__ == "__main__":
-    main()
+    unittest.main()
